@@ -4,8 +4,8 @@ class Header extends Component {
     render() {
         return (
             <section className="header">
-                <h1>Weather Caster <span role="img" aria-label={"rain"}>☂️</span></h1>
-                <span className="annotation">(MERN Full Stack Website Example)</span>
+                <h1>WeatherCaster <span role="img" aria-label={"umbrella"}>☂️</span></h1>
+                <span className="annotation">(chandhanu.m.k@gmail.com | 7323220885)</span>
             </section>
         );
     }

@@ -27,7 +27,7 @@ class WeatherHistoryPanel extends Component {
 
         // Listing history of zip code submissions in "most recent" order
         for (let i = historyList.length - 1; i >= 0; i--) {
-            let infoCard = this.getInfoListItem(historyList[i]);
+            let infoCard = this.getInfoListItem(historyList[i], i); // Pass the index as a second argument
             historyComponents.push(infoCard);
         }
 
@@ -40,9 +40,9 @@ class WeatherHistoryPanel extends Component {
         );
     }
 
-    getInfoListItem = (info) => {
+    getInfoListItem = (info, index) => { // Modify this method to accept the index as a second argument
         return (
-            <ListGroup.Item><b>{info.timestamp}</b> -
+            <ListGroup.Item key={index}><b>{info.timestamp}</b> -
                 [{info.city}, {info.zipcode}]:[{info.temperature}, {info.description}]</ListGroup.Item>
         );
     }
