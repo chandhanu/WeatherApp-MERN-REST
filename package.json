@@ -4,6 +4,7 @@
   "description": "An MERN Implementation of a Weather App and REST APIs.",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +16,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "index.js": "^0.0.3",
     "mongoose": "^8.3.1"
   },
   "devDependencies": {
