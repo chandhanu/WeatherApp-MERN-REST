@@ -51,6 +51,7 @@ class WeatherForm extends Component {
 
             this.saveToStore(weatherData);
             this.saveToLocalStorage(weatherData);
+            this.saveToMongo(weatherData);
         });
     }
 
