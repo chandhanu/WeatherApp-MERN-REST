@@ -1,0 +1,57 @@
+.weather-info {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.city-name {
+  margin-bottom: 20px;
+  margin: 20px;
+}
+
+.overcast-img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.overcast-description {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.current-weather, .temps {
+  margin-top: 20px;
+}
+
+.humidity, .curr-temp, .feels-like, .min-temp, .max-temp {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.fa-solid, .fa-regular {
+  margin-right: 5px;
+}
+
+.save-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #262626; 
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+
+  &:hover {
+    background-color: #333333; 
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    background-color: #111111; 
+    transform: translateY(0); 
+  }
+}

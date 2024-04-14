@@ -110,9 +110,9 @@ class WeatherForm extends Component {
         return (
             <Form className="weather-form" onSubmit={this.saveFormData}>
 
-<Row type="flex" justify="center" align="center">
+                <Row type="flex" justify="center" align="center">
                     <Col span={4}>
-                        <ButtonGroup toggle='true'>
+                        {/*<ButtonGroup toggle='true'>
                             <ToggleButton
                             id="celsius-button"
                             key={"C"}
@@ -138,13 +138,12 @@ class WeatherForm extends Component {
                             Fahrenheit (°F)
                         </ToggleButton>
                            
-                        </ButtonGroup>
+        </ButtonGroup>*/}
                     </Col>
                 </Row>
 
                 <Row type="flex" justify="center" align="center" className="zipCode">
                     <Col>
-                        <span>Zip Code: </span>
                         <Form.Control name="zipCodeInput"
                                       type="text"
                                       placeholder="Enter your zip code"

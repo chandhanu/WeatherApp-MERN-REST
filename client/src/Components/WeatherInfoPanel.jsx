@@ -30,16 +30,16 @@ class WeatherInfoPanel extends Component {
                     <hr/>
 
                     <section className="current-weather">
-                        <span className="humidity">Humidity <i class="fa-solid fa-water"></i>: {weatherData.main.humidity}%</span>
-                        <span className="curr-temp">Temp<i class="fa-solid fa-temperature-half"></i>: {weatherData.main.temp}{metricSymbol}</span>
-                        <span className="feels-like">Feels like<i class="fa-regular fa-face-grin-beam-sweat"></i>: {weatherData.main.feels_like}{metricSymbol}</span>
+                        <span className="humidity">Humidity <i className="fa-solid fa-water"></i>: {weatherData.main.humidity}%</span>
+                        <span className="curr-temp">Temp<i className="fa-solid fa-temperature-half"></i>: {weatherData.main.temp}{metricSymbol}</span>
+                        <span className="feels-like">Feels like<i className="fa-regular fa-face-grin-beam-sweat"></i>: {weatherData.main.feels_like}{metricSymbol}</span>
                     </section>
 
                     <hr/>
 
                     <section className="temps">
-                        <span className="min-temp">Low<i class="fa-solid fa-temperature-arrow-up"></i>: {weatherData.main.temp_min}{metricSymbol}</span>
-                        <span className="max-temp">High<i class="fa-solid fa-temperature-arrow-down"></i>: {weatherData.main.temp_max}{metricSymbol}</span>
+                        <span className="min-temp">Low<i className="fa-solid fa-temperature-arrow-up"></i>: {weatherData.main.temp_min}{metricSymbol}</span>
+                        <span className="max-temp">High<i className="fa-solid fa-temperature-arrow-down"></i>: {weatherData.main.temp_max}{metricSymbol}</span>
                     </section>
                 </section>
             );
