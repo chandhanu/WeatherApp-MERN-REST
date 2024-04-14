@@ -10,7 +10,7 @@ class WeatherForm extends Component {
     // default state values
     state = {
         tempMetric: "imperial",
-        zipCodeInput: "98052"
+        zipCodeInput: "08901"
     }
 
     componentDidMount() {
@@ -106,7 +106,7 @@ class WeatherForm extends Component {
 
                 <Row type="flex" justify="center" align="center">
                     <Col span={4}>
-                        <ButtonGroup toggle>
+                        <ButtonGroup toggle='true'>
                             <ToggleButton
                             id="celsius-button"
                             key={"C"}
