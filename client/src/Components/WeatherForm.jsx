@@ -59,12 +59,12 @@ class WeatherForm extends Component {
             }).catch(error => {
                 console.error("Error fetching weather data:", error);
                 // Update the error message state
-                this.setState({ errorMessage: "Invlid Entry: Please provide a valid 5 digit US code" });
+                this.setState({ errorMessage: "Invalid Entry: Please provide a valid 5 digit US code" });
             });
         } catch (error) {
             console.error("Error in saveFormData:", error);
             // Update the error message state
-            this.setState({ errorMessage: "Invlid Entry: Please provide a valid 5 digit US code" });
+            this.setState({ errorMessage: "Invalid Entry: Please provide a valid 5 digit US code" });
         }
     }
 
