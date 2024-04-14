@@ -1,7 +1,7 @@
 .weather-info {
   display: grid;
-  gap: 10px; /* Adds space between grid items */
- 
+  gap: 0px; /* Adds space between grid items */
+  border: 1px;
   .city-name {
      text-decoration: underline;
      align-self: center;
@@ -10,7 +10,7 @@
  
   .overcast {
      display: grid;
-     gap: 10px; /* Adds space between the image and description */
+     gap: 0px; /* Adds space between the image and description */
  
      .overcast-img,
      .overcast-description {
@@ -22,7 +22,7 @@
   .current-weather {
      display: grid;
      grid-template-columns: repeat(3, 1fr);
-     gap: 10px; /* Adds space between the weather info items */
+     gap: 0px; /* Adds space between the weather info items */
  
      .humidity,
      .curr-temp,
