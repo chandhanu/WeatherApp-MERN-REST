@@ -20,7 +20,7 @@ const WeatherCityForm = () => {
             setWeatherData(response.data);
         } catch (error) {
             console.error(error);
-            setError("Failed to fetch weather data. Please try again.");
+            setError("Failed to fetch weather data. Please provide a valid City Name, Eg: [New Brunswick, CA] or [New York]");
         } finally {
             setLoading(false);
         }

@@ -11,14 +11,19 @@ class Container extends Component {
     render() {
         return(
             <section className="weather container">
+                <div>
+                    
                 <h3 className="annotation" align="center">Functional Components with Hooks </h3>
                 <WeatherCityForm />
-                
-                <h3 className="annotation" align="center">Class Components with Redux & MongoDB integration </h3>
+                </div>
+                <div>
+
+                <h3 className="annotation" align="center">Class Components with Redux, LocalStorage & MongoDB integration </h3>
                 <WeatherForm />
                 <WeatherPanels weatherData={this.state.weatherData}/>
-                
+                </div>
             </section>
+                
         );
     }
 }

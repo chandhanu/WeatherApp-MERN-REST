@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Form, Button, Row, Col, ButtonGroup, ToggleButton} from "react-bootstrap";
+import {Form, Button, Row, Col} from "react-bootstrap";
 import '@fortawesome/fontawesome-free/css/all.css';
 
 import axios from 'axios';
@@ -11,7 +11,8 @@ class WeatherForm extends Component {
     // default state values
     state = {
         tempMetric: "imperial",
-        zipCodeInput: "08901"
+        zipCodeInput: "08901",
+        errorMessage: "" // New state for the error message
     }
 
     componentDidMount() {
@@ -32,12 +33,12 @@ class WeatherForm extends Component {
     }
 
     onChange = (e) => {
-        // Check if the event is from the ToggleButtonGroup
-        if (e.target.name === "tempMetric") {
-            this.setState({ tempMetric: e.target.value });
-        } else {
-            this.setState({ [e.target.name]: e.target.value });
+        // Clear the error message when a new zip code is entered
+        if (e.target.name === "zipCodeInput") {
+            this.setState({ errorMessage: "" });
         }
+
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     saveFormData = (event) => {
@@ -53,13 +54,17 @@ class WeatherForm extends Component {
                 this.saveToStore(weatherData);
                 this.saveToLocalStorage(weatherData);
                 this.saveToMongo(weatherData);
+                // Clear the error message after successful fetch
+                this.setState({ errorMessage: "" });
             }).catch(error => {
                 console.error("Error fetching weather data:", error);
-                // Handle the error, e.g., show a message to the user
+                // Update the error message state
+                this.setState({ errorMessage: "Invlid Entry: Please provide a valid 5 digit US code" });
             });
         } catch (error) {
             console.error("Error in saveFormData:", error);
-            // Handle the error, e.g., show a message to the user
+            // Update the error message state
+            this.setState({ errorMessage: "Invlid Entry: Please provide a valid 5 digit US code" });
         }
     }
 
@@ -112,33 +117,7 @@ class WeatherForm extends Component {
 
                 <Row type="flex" justify="center" align="center">
                     <Col span={4}>
-                        {/*<ButtonGroup toggle='true'>
-                            <ToggleButton
-                            id="celsius-button"
-                            key={"C"}
-                            type="radio"
-                            variant="secondary"
-                            name="tempMetric"
-                            value="metric"
-                            checked={this.state.tempMetric === "metric"}
-                            onChange={this.onChange}
-                        >
-                            Celsius (°C)
-                        </ToggleButton>
-                        <ToggleButton
-                            id="fahrenheit-button"
-                            key={"F"}
-                            type="radio"
-                            variant="secondary"
-                            name="tempMetric"
-                            value="imperial"
-                            checked={this.state.tempMetric === "imperial"}
-                            onChange={this.onChange}
-                        >
-                            Fahrenheit (°F)
-                        </ToggleButton>
-                           
-        </ButtonGroup>*/}
+                        {/* ToggleButtonGroup for temperature metric selection */}
                     </Col>
                 </Row>
 
@@ -149,10 +128,9 @@ class WeatherForm extends Component {
                                       placeholder="Enter your zip code"
                                       onChange={this.onChange}
                                       className="zipCodeInput"/>
+                        {this.state.errorMessage && <div className="error-message">{this.state.errorMessage}</div>}
                     </Col>
                 </Row>
-
-                
 
                 <Row type="flex" justify="center" align="center">
                     <Col span={4}>
@@ -168,7 +146,6 @@ class WeatherForm extends Component {
 }
 
 // Mapping state from the store to props;
-// meaning...if we update these props, it'll update the redux store
 const mapStateToProps = (state) => {
     return {
         zipCode: state.zipCode,
