@@ -1,15 +1,28 @@
-.annotation {
-    font-size: 8px;
-    font-family: ShareTechMono, serif;
+.header {
+    text-align: center;
+    background: #222; // Dark background color
+    color: #2496a7; // Light text color for better contrast
+    margin-bottom: 50px;
+    padding: 20px 0;
 }
 
-.header {
-    font-family: MajorMonoDisplay, serif;
-    text-align: center;
-    background: white;
+.annotation {
+    font-size: 8px;
+    color: #aaa; // Light grey for annotation text to maintain contrast
+}
 
-    box-shadow: 0 30px 30px 0 rgba(0, 0, 0, 0.1);
-    margin-bottom: 50px;
+a {
+    color: #e2e2e2; // Link color, a common blue for links in dark themes
+    text-decoration: none; // Removing underline for a cleaner look
+    &:hover {
+        color: #d2e8ff; // Darker blue on hover for better visibility
+    }
+}
 
-    padding: 20px 0;
+.portfolio-link, .github-link {
+    display: inline-block;
+    margin: 10px; // Adjust the margin as needed to increase space
+    i {
+        margin-right: 5px;
+    }
 }

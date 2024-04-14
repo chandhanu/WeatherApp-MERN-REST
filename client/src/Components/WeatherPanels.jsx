@@ -11,8 +11,9 @@ class WeatherPanels extends Component {
                 <WeatherInfoPanel/>
 
                 </div>
+                <hr></hr>
                 <div>
-                <p>History Local Store</p>
+                <h4 align='center'>Saved Checks</h4>
                     
                 <WeatherHistoryPanel/>
                 </div>

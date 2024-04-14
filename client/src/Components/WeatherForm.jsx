@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Form, Button, Row, Col, ButtonGroup, ToggleButton} from "react-bootstrap";
+import '@fortawesome/fontawesome-free/css/all.css';
 
 import axios from 'axios';
 
@@ -41,18 +42,25 @@ class WeatherForm extends Component {
 
     saveFormData = (event) => {
         event.preventDefault();
-
-        // Gets the weather data from the weather api and returns it to save into local storage and redux store.
-        axios.post("/api/weather", {
-            zipCode: this.state.zipCodeInput,
-            tempMetric: this.state.tempMetric
-        }).then(response => {
-            let weatherData = response.data;
-
-            this.saveToStore(weatherData);
-            this.saveToLocalStorage(weatherData);
-            this.saveToMongo(weatherData);
-        });
+    
+        try {
+            axios.post("/api/weather", {
+                zipCode: this.state.zipCodeInput,
+                tempMetric: this.state.tempMetric
+            }).then(response => {
+                let weatherData = response.data;
+    
+                this.saveToStore(weatherData);
+                this.saveToLocalStorage(weatherData);
+                this.saveToMongo(weatherData);
+            }).catch(error => {
+                console.error("Error fetching weather data:", error);
+                // Handle the error, e.g., show a message to the user
+            });
+        } catch (error) {
+            console.error("Error in saveFormData:", error);
+            // Handle the error, e.g., show a message to the user
+        }
     }
 
     // Save data from form to local storage
@@ -64,14 +72,23 @@ class WeatherForm extends Component {
     }
 
     saveToMongo = (event) => {
-        axios.post("/api/weatherMongo", {
-            zipCode: this.state.zipCodeInput,
-            tempMetric: this.state.tempMetric
-        }).then(response => {
-            let weatherData = response.data;
+        try {
+            axios.post("/api/weatherMongo", {
+                zipCode: this.state.zipCodeInput,
+                tempMetric: this.state.tempMetric
+            }).then(response => {
+                let weatherData = response.data;
+                console.log("Weather data saved successfully to MongoDB:", weatherData);
 
-            // do whatever you want with the weather data
-        });
+                // do whatever you want with the weather data
+            }).catch(error => {
+                console.error("Error saving to MongoDB:", error);
+                // Handle the error, e.g., show a message to the user
+            });
+        } catch (error) {
+            console.error("Error in saveToMongo:", error);
+            // Handle the error, e.g., show a message to the user
+        }
     }
 
     // Saves data to the Redux store
@@ -93,18 +110,7 @@ class WeatherForm extends Component {
         return (
             <Form className="weather-form" onSubmit={this.saveFormData}>
 
-                <Row type="flex" justify="center" align="center" className="zipCode">
-                    <Col>
-                        <span>Zip Code: </span>
-                        <Form.Control name="zipCodeInput"
-                                      type="text"
-                                      placeholder="Enter your zip code"
-                                      onChange={this.onChange}
-                                      className="zipCodeInput"/>
-                    </Col>
-                </Row>
-
-                <Row type="flex" justify="center" align="center">
+<Row type="flex" justify="center" align="center">
                     <Col span={4}>
                         <ButtonGroup toggle='true'>
                             <ToggleButton
@@ -131,36 +137,28 @@ class WeatherForm extends Component {
                         >
                             Fahrenheit (°F)
                         </ToggleButton>
-                            {/*<ToggleButton
-                                key={"C"}
-                                type="radio"
-                                variant="secondary"
-                                name="tempMetric"
-                                value={"metric"}
-                                checked={this.state.tempMetric === "metric"}
-                                onChange={this.onChange}
-                            >
-                                Celsius (°C)
-                            </ToggleButton>
-                            <ToggleButton
-                                key={"F"}
-                                type="radio"
-                                variant="secondary"
-                                name="tempMetric"
-                                value={"imperial"}
-                                checked={this.state.tempMetric === "imperial"}
-                                onChange={this.onChange}
-                            >
-                                Fahrenheit (°F)
-        </ToggleButton>*/}
+                           
                         </ButtonGroup>
                     </Col>
                 </Row>
 
+                <Row type="flex" justify="center" align="center" className="zipCode">
+                    <Col>
+                        <span>Zip Code: </span>
+                        <Form.Control name="zipCodeInput"
+                                      type="text"
+                                      placeholder="Enter your zip code"
+                                      onChange={this.onChange}
+                                      className="zipCodeInput"/>
+                    </Col>
+                </Row>
+
+                
+
                 <Row type="flex" justify="center" align="center">
                     <Col span={4}>
                         <Button className="save-btn" variant="primary" type="submit">
-                            Save
+                        <i className="fa-solid fa-search"></i> LookUp
                         </Button>
                     </Col>
                 </Row>

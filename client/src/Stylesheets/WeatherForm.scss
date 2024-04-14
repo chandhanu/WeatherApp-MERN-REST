@@ -3,12 +3,31 @@
     margin: 20px 0;
 
     .zipCodeInput {
-      max-width: 200px;
+      max-width: 50%;
       display: inline-block;
     }
   }
 
   .save-btn {
     margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #262626; 
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+
+    &:hover {
+      background-color: #333333; 
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      background-color: #111111; 
+      transform: translateY(0); 
+    }
   }
+
 }

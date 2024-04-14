@@ -18,26 +18,35 @@ router.get("/weather",  async (req, res) => {
 });
 
 // POST Request - dynamically get the weather data based on request body
-router.post("/weather",  async (req, res) => {
-    const {zipCode, tempMetric} = req.body;
-    let weather = new Weather();
+router.post("/weather", async (req, res) => {
+    try {
+        const {zipCode, tempMetric} = req.body;
+        let weather = new Weather();
 
-    // The params for zipCode and tempMetric are dynamic
-    let weatherData = await weather.getWeatherData(zipCode, tempMetric);
+        let weatherData = await weather.getWeatherData(zipCode, tempMetric);
 
-    res.header("Content-Type",'application/json');
-    res.send(JSON.stringify(weatherData, null, 4));
+        res.header("Content-Type",'application/json');
+        res.send(JSON.stringify(weatherData, null, 4));
+    } catch (error) {
+        console.error("Error in /weather POST:", error);
+        res.status(500).send({ error: "An error occurred while fetching weather data." });
+    }
 });
 
 // POST Request - get the weather data from the api, save it to mongo, then return the data back
 router.post("/weatherMongo", async(req, res) => {
-    const {zipCode, tempMetric} = req.body;
-    let weather = new Weather();
-    let weatherData = await weather.getWeatherData(zipCode, tempMetric);
+    try {
+        const {zipCode, tempMetric} = req.body;
+        let weather = new Weather();
+        let weatherData = await weather.getWeatherData(zipCode, tempMetric);
 
-    await weather.saveWeatherDataToMongo(zipCode, weatherData);
-    res.header("Content-Type",'application/json');
-    res.send(JSON.stringify(weatherData, null, 4));
+        await weather.saveWeatherDataToMongo(zipCode, weatherData);
+        res.header("Content-Type",'application/json');
+        res.send(JSON.stringify(weatherData, null, 4));
+    } catch (error) {
+        console.error("Error in /weatherMongo POST:", error);
+        res.status(500).send({ error: "An error occurred while saving weather data to MongoDB." });
+    }
 })
 
 // GET Request - get the weather data saved from Mongo
