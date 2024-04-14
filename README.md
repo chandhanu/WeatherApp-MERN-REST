@@ -5,19 +5,20 @@ This project is a comprehensive weather application built with ReactJS, Node.js,
 
 Features
 --------
-Weather Lookup: Users can search for weather information by zip code.
-Temperature Metric Selection: Users can choose between Celsius and Fahrenheit.
-Historical Data: The application stores and displays historical weather data.
-LocalStorage Integration: User preferences and recent searches are saved in the browser's LocalStorage.
-MongoDB Integration: Historical weather data is stored in a MongoDB database.
+1. Weather Lookup: Users can search for weather information by zip code.
+2. Temperature Metric Selection: Users can choose between Celsius and Fahrenheit.
+3. Historical Data: The application stores and displays historical weather data.
+4. LocalStorage Integration: User preferences and recent searches are saved in the browser's LocalStorage.
+5. MongoDB Integration: Historical weather data is stored in a MongoDB database.
+
 Technologies Used
-Frontend: ReactJS for building the user interface.
-Backend: Node.js and Express.js for creating the server and handling API requests.
-Database: MongoDB for storing historical weather data.
-State Management: Redux for managing application state.
-Local Storage: For persisting user preferences and recent searches.
-APIs: REST APIs for fetching weather data.
-Getting Started
+-----------------
+1. Frontend: ReactJS for building the user interface.
+2. Backend: Node.js and Express.js for creating the server and handling API requests.
+3. Database: MongoDB for storing historical weather data.
+4. State Management: Redux for managing application state.
+5. Local Storage: For persisting user preferences and recent searches.
+6. APIs: OpenWeather APIs, REST APIs for fetching weather data.
 
 Prerequisites
 --------------
