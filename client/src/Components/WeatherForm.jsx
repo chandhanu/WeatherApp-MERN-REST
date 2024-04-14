@@ -31,7 +31,12 @@ class WeatherForm extends Component {
     }
 
     onChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
+        // Check if the event is from the ToggleButtonGroup
+        if (e.target.name === "tempMetric") {
+            this.setState({ tempMetric: e.target.value });
+        } else {
+            this.setState({ [e.target.name]: e.target.value });
+        }
     }
 
     saveFormData = (event) => {
@@ -102,6 +107,30 @@ class WeatherForm extends Component {
                     <Col span={4}>
                         <ButtonGroup toggle>
                             <ToggleButton
+                            id="celsius-button"
+                            key={"C"}
+                            type="radio"
+                            variant="secondary"
+                            name="tempMetric"
+                            value="metric"
+                            checked={this.state.tempMetric === "metric"}
+                            onChange={this.onChange}
+                        >
+                            Celsius (°C)
+                        </ToggleButton>
+                        <ToggleButton
+                            id="fahrenheit-button"
+                            key={"F"}
+                            type="radio"
+                            variant="secondary"
+                            name="tempMetric"
+                            value="imperial"
+                            checked={this.state.tempMetric === "imperial"}
+                            onChange={this.onChange}
+                        >
+                            Fahrenheit (°F)
+                        </ToggleButton>
+                            {/*<ToggleButton
                                 key={"C"}
                                 type="radio"
                                 variant="secondary"
@@ -122,7 +151,7 @@ class WeatherForm extends Component {
                                 onChange={this.onChange}
                             >
                                 Fahrenheit (°F)
-                            </ToggleButton>
+        </ToggleButton>*/}
                         </ButtonGroup>
                     </Col>
                 </Row>
