@@ -5,8 +5,10 @@ An MERN Implementation of a Weather App and REST APIs.
 
 This project is a comprehensive weather application built with ReactJS, Node.js, Express.js, MongoDB, and Redux. It utilizes REST APIs for fetching weather data, Redux for state management, LocalStorage for persisting user preferences, and MongoDB for storing historical weather data.
 
-Demo: https://docs.google.com/document/d/1RmDrlzy84t3YiOL47BNq5Y_53Hhhm_gIoEpNPAWMwTo/edit?usp=sharing
-Portfolio : https://chandhanu.com 
+- Project: https://weather-app-mern-9ad13eb165b2.herokuapp.com/ 
+- Github: https://github.com/chandhanu/WeatherApp-MERN-REST/tree/main/client
+- Demo: https://docs.google.com/document/d/1RmDrlzy84t3YiOL47BNq5Y_53Hhhm_gIoEpNPAWMwTo/edit?usp=sharing
+- Portfolio: https://chandhanu.com 
 
 Features
 --------
