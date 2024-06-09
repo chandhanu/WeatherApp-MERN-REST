@@ -1,50 +1,66 @@
-import React, { useState, useEffect } from "react";
+// Import necessary React hooks and components
+import React, { useState } from "react";
+// Import Axios for making HTTP requests
 import axios from 'axios';
+// Import UI components from React Bootstrap
 import { Form, Button, Row, Col } from "react-bootstrap";
+// Import custom styles
 import '../Stylesheets/WeatherCityForm.scss';
 
+// Define the WeatherCityForm component
 const WeatherCityForm = () => {
+    // State for the city name input
     const [city, setCity] = useState('');
+    // State for storing fetched weather data
     const [weatherData, setWeatherData] = useState(null);
+    // State to indicate if data is currently being fetched
     const [loading, setLoading] = useState(false);
+    // State for storing any error messages
     const [error, setError] = useState(null);
-    const [metric, setMetric] = useState('metric'); // Default to Celsius
+    // State for temperature unit (default to Celsius)
+    const [metric, setMetric] = useState('metric');
 
+    // Function to fetch weather data
     const fetchData = async () => {
+        // Set loading to true
         setLoading(true);
+        // Reset any previous error messages
         setError(null);
         try {
+            // Make an API request to fetch weather data
             const response = await axios.get(
                 `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${metric === 'metric' ? 'metric' : 'imperial'}&appid=42e7afe4477beb0e6a173bac36eb79bc`
             );
+            // Update weatherData state with the fetched data
             setWeatherData(response.data);
         } catch (error) {
+            // Log the error to the console
             console.error(error);
+            // Set an error message
             setError("Failed to fetch weather data. Please provide a valid City Name, Eg: [New Brunswick, CA] or [New York]");
         } finally {
+            // Set loading to false after the request is complete
             setLoading(false);
         }
     };
 
-    useEffect(() => {
-        if (city) {
-            fetchData();
-        }
-    }, [city, metric]);
-
+    // Handler for input change
     const handleInputChange = (e) => {
         setCity(e.target.value);
     };
 
+    // Handler for form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         fetchData();
     };
 
+    // Function to toggle between Celsius and Fahrenheit
     const toggleMetric = () => {
         setMetric(prevMetric => prevMetric === 'metric' ? 'imperial' : 'metric');
     };
 
+    // Return the JSX to render
     return (
         <div className="weather-info">
             <Form onSubmit={handleSubmit}>
@@ -57,7 +73,7 @@ const WeatherCityForm = () => {
                 </Row>
                 <Row className="justify-content-center">
                     <Col md={6}>
-                
+                        <Button type="submit">Get Weather</Button>
                     </Col>
                 </Row>
             </Form>
@@ -88,4 +104,5 @@ const WeatherCityForm = () => {
     );
 };
 
+// Export the component
 export default WeatherCityForm;
