@@ -1,9 +1,9 @@
 # WeatherApp-MERN-Redux-REST
 
 
-An MERN Implementation of a Weather App and REST APIs. 
+A MERN Implementation of a Weather App and REST APIs. 
 
-This project is a comprehensive weather application built with ReactJS, Node.js, Express.js, MongoDB, and Redux. It utilizes REST APIs for fetching weather data, Redux for state management, LocalStorage for persisting user preferences, and MongoDB for storing historical weather data.
+This project is a comprehensive weather application built with ReactJS, Node.js, Express.js, MongoDB, and Redux state management. It utilizes REST APIs for fetching weather data, Redux for state management, LocalStorage for persisting user preferences, and MongoDB for storing historical weather data. It derives the Client-Server Architecture model, and containerizes the module using Docker  and Docker compose. 
 
 - Project: https://weather-app-mern-9ad13eb165b2.herokuapp.com/ 
 - Github: https://github.com/chandhanu/WeatherApp-MERN-REST/tree/main/client
@@ -15,8 +15,10 @@ Features
 1. Weather Lookup: Users can search for weather information by zip code.
 2. Temperature Metric Selection: Users can choose between Celsius and Fahrenheit.
 3. Historical Data: The application stores and displays historical weather data.
-4. LocalStorage Integration: User preferences and recent searches are saved in the browser's LocalStorage.
+4. LocalStorage Integration (Cache): User preferences and recent searches are saved in the browser's LocalStorage.
 5. MongoDB Integration: Historical weather data is stored in a MongoDB database.
+6. Dockerfile is integrated and automated for effectively deploying in Kubernetes or AWS AKS instance in one shot. 
+7. Easier to scale individually and together - modeled microservices architecture
 
 Technologies Used
 -----------------
@@ -25,12 +27,13 @@ Technologies Used
 3. Database: MongoDB for storing historical weather data.
 4. State Management: Redux for managing application state.
 5. Local Storage: For persisting user preferences and recent searches.
-6. APIs: OpenWeather APIs, REST APIs for fetching weather data.
+6. APIs: OpenWeather APIs, and REST APIs for fetching weather data.
 
 Prerequisites
 --------------
-Node.js and npm installed on your machine.
-MongoDB installed and running.
+In the container version, install docker and run the docker server, clone the git and run docker-compose after changing weather key in .env 
+Node.js and npm are installed on your machine.
+MongoDB is installed and running.
 
 # Implementations
 1. Functional Components with Hooks
@@ -51,21 +54,19 @@ MongoDB installed and running.
 - It demonstrates the integration of these technologies in a weather application.
 - API: http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid={api-key}
 
+3. Docker Containerization
+--------------------------
+- Containerized React module (Client)
+- Containerized Express/NodeJS module (Server)
+- Containerized MongoDB (Database)
+- Decoupled all the components 
+- Can be containerized separately and together using docker-compose.yml 
+- Can be scaled separately and together 
+- Usage "docker-compose up [-d]"
+- Note: Please make sure the ports given are free, Server port 5000:5000 and client - port 8080:3000 are exposed, use "docker-compose down" to stop gracefully 
+
 
 Demo: https://docs.google.com/document/d/1RmDrlzy84t3YiOL47BNq5Y_53Hhhm_gIoEpNPAWMwTo/edit?usp=sharing
-
-Time Taken : 
-------------
-- Backend Structure: 4 hours 
-- API endpoints: 4 hours 
-- MongoDB integration - 2 hours 
-- Testing API endpoints and Bug Fixes : 3 hours 
-- React App with redux: 8 hours 
-- Bug Fixes - 5 hours (Git revert)
-- Frontend-backend integration - 4 hours 
-- Stylization - 4 hours
-- Refactoring - 2 hours  
-- Hosting - 2 hours 
 
 
 
