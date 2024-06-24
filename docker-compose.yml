@@ -1,0 +1,31 @@
+version: '3.8'  # Ensure this is supported by your Docker Compose version
+
+services:
+  client:
+    build: ./client
+    image: weather-client
+    stdin_open: true
+    ports:
+      - "8080:3000"
+    depends_on:
+      - server
+    networks:
+      - mern-app
+
+  server:
+    build: ./server
+    image: weather-server
+    ports:
+      - "5000:5000"
+    networks:
+      - mern-app
+    environment:
+      - NODE_ENV=development
+      - MONGO_URL=mongodb://mongo:27017/mydb
+    #volumes:
+    #  - ./server:/app
+    #  - /app/node_modules
+
+networks:
+  mern-app:
+    driver: bridge

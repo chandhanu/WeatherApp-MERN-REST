@@ -5,7 +5,7 @@ import React, {Component} from "react";
 import {Form, Button, Row, Col} from "react-bootstrap";
 
 // Import FontAwesome icons for use in the UI
-import '@fortawesome/fontawesome-free/css/all.css';
+//import '@fortawesome/fontawesome-free/css/all.css';
 
 // Import axios for making HTTP requests
 import axios from 'axios';
